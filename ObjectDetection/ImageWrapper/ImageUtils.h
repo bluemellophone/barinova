@@ -319,8 +319,8 @@ template<class T, class U> void Mask2Perim(T *mask, U *perim, int width, int hei
 {
   for(int y = 0, i =0; y < height; y++)
     for(int x = 0; x < width; x++, i++)
-      perim[i] = (y && mask[i] != mask[i-width] || x && mask[i] != mask[i-1] ||
-        y < height-1 && mask[i] != mask[i+width] || x < width-1 && mask[i] != mask[i+1])? 1:0;
+      perim[i] = ((y && mask[i] != mask[i-width]) || (x && mask[i] != mask[i-1]) ||
+        (y < height-1 && mask[i] != mask[i+width]) || (x < width-1 && mask[i] != mask[i+1]))? 1:0;
 }
 
 // =======================================================================================================
@@ -330,8 +330,8 @@ template<class T, class U> void DrawSegmentation24bpp(T *im, U *mask, int w, int
     for(int x = 0; x < w; x++, i++)
     {
       if(y >= 0  && x >= 0 && x < w && y < h &&
-        (y>0 && mask[i] != mask[i-w] || y < h && mask[i] != mask[i+w] ||
-        x>0 && mask[i] != mask[i-1] || x < w && mask[i] != mask[i+1] ))
+        ((y>0 && mask[i] != mask[i-w]) || (y < h && mask[i] != mask[i+w]) ||
+        (x>0 && mask[i] != mask[i-1]) || (x < w && mask[i] != mask[i+1])))
       {
         im[3*i+0] = 0;
         im[3*i+1] = 0;

@@ -139,8 +139,8 @@ void CHoughForest::blurConditionalsSingleScale(unsigned int in_uiScaledPatchCent
 
     float scaleCoef = (float)curWidth / (float)m_vecResizedProbImages[0]->width;
 
-    int scaledPatchLeftX =  in_uiScaledPatchCenterX - patchSize/2.0;
-    int scaledPatchTopY =  in_uiScaledPatchCenterY - patchSize/2.0;
+    // int scaledPatchLeftX =  in_uiScaledPatchCenterX - patchSize/2.0;
+    // int scaledPatchTopY =  in_uiScaledPatchCenterY - patchSize/2.0;
 
     if ( in_uiScaledPatchCenterX < patchSize/(2.0*scaleCoef) ||
             in_uiScaledPatchCenterX > curWidth - patchSize/(2.0*scaleCoef) ||

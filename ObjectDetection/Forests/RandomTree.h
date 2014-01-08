@@ -71,11 +71,11 @@ public:
 
             leftSamples = new int[nNodeSamples];
             rightSamples = new int[nNodeSamples];
-            nLeftSamples;
-            nRightSamples;
+            // nLeftSamples;
+            // nRightSamples;
 
-            bestNLeftSamples;
-            bestNRightSamples;
+            // bestNLeftSamples;
+            // bestNRightSamples;
             int bestTextIdx = 0;
             for(int i = 0; i < nTests; i++)
             {

@@ -136,10 +136,10 @@ void CGreedyDetection::updateCostsOfOnePatch(IplImage *in_ProbMap,
                                              int firstScaledRow, int lastScaledRow,
                                              int firstScaledCol, int lastScaledCol)
 {
-    int curHeight = in_ProbMap->height;
-    int curWidth = in_ProbMap->width;
+    // int curHeight = in_ProbMap->height;
+    // int curWidth = in_ProbMap->width;
 
-    int forestPatchSize = uForest.getPatchSize();
+    // int forestPatchSize = uForest.getPatchSize();
 
 
     if (init)
@@ -347,7 +347,7 @@ void CGreedyDetection::updateGivenCosts()
 {
     cvSetZero(DeltaCosts);
 
-    int forestPatchSize = uForest.getPatchSize();
+    // int forestPatchSize = uForest.getPatchSize();
 
     int lastCenterI = m_vecDetections[m_vecDetections.size()-1].y;
     int lastCenterJ = m_vecDetections[m_vecDetections.size()-1].x;
@@ -503,7 +503,7 @@ void CGreedyDetection::Detect(const char *input_image_path,
     initAccumulator();
     initGivenCosts();
 
-    char tmpName[256];
+    // char tmpName[256];
 
     int step = 0;
     while (step < in_iMaxObjectsCount)
@@ -633,7 +633,7 @@ void CGreedyDetection::saveAccumulator(std::string in_sPath)
     for (std::size_t iScale = 0; iScale < m_vecAccumulators.size(); iScale +=1)
     {
         char tmpName[256];
-        sprintf(tmpName, "%s%03d.txt", in_sPath.c_str(), iScale);
+        sprintf(tmpName, "%s%03lu.txt", in_sPath.c_str(), iScale);
 
         IplImage *tmpAccum = cvCloneImage(m_vecAccumulators[iScale]);
 

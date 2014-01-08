@@ -39,10 +39,10 @@ void GetResizedMultiImage(const MultiImage& in_OrigMultiImage,
     int *im = out_ResizedMultiImage.allChannels[i];
         
     int im_width = out_ResizedMultiImage.width;
-    int im_height = out_ResizedMultiImage.height;
+    // int im_height = out_ResizedMultiImage.height;
 
     int im_width_ = out_ResizedMultiImage.width_;
-    int im_height_ = out_ResizedMultiImage.height_;
+    // int im_height_ = out_ResizedMultiImage.height_;
     
     int offset = i * out_ResizedMultiImage.width_ * out_ResizedMultiImage.height_;
 

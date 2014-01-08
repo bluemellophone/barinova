@@ -47,16 +47,21 @@ file(GLOB SrcCpp
 
 # ----------------------------------------------------------------------
 # Create the executable
-set(OPT_CXX_FLAGS "-O3 -fopenmp -funroll-loops -march=native -mtune=native --fast-math -mfpmath=sse -msse3 ")
+if(WIN32)
+	set(OPT_CXX_FLAGS "-O3 -fopenmp -funroll-lolsops -march=native -mtune=native --fast-math -mfpmath=sse -msse3 ")
+else()
+	set(OPT_CXX_FLAGS "-O3 -funroll-loops -march=native -mtune=native -ffast-math -msse3 ")
+endif()
+
 #set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -g -p ${OPT_CXX_FLAGS}")
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -DNDEBUG ${OPT_CXX_FLAGS}")
 
 add_executable(object_detection ${SrcCpp})
 
 target_link_libraries(object_detection
-   boost_filesystem-mt boost_system-mt 
-   #boost_thread-mt
-   gomp 
+   boost_filesystem boost_system
+   boost_thread
+   gomp
    ${opencv_LIBRARIES}
 )   
  
