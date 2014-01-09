@@ -1,4 +1,3 @@
-
 Pedestrians detection using Hough forests
 ==========================================
 
@@ -39,8 +38,7 @@ All of these are provided as packages in the mainstream linux distributions.
 Compiling
 ---------
 
-1. Move inside the `ObjectDetection/ObjectDetection` folder.
-2. Run `cmake ./ && make` to build the program `object_detection`
+1. ./build_barinova_unix.sh
 
 Testing
 -------
