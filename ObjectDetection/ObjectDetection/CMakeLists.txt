@@ -53,7 +53,6 @@ else()
 	set(OPT_CXX_FLAGS "-O3 -funroll-loops -march=native -mtune=native -ffast-math -msse3 ")
 endif()
 
-#set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -g -p ${OPT_CXX_FLAGS}")
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -DNDEBUG ${OPT_CXX_FLAGS}")
 
 add_executable(object_detection ${SrcCpp})
@@ -61,7 +60,11 @@ add_executable(object_detection ${SrcCpp})
 target_link_libraries(object_detection
    boost_filesystem boost_system
    boost_thread
-   gomp
+   gomp # ln -s /opt/local/lib/libgcc/libgomp.1.dylib libgomp.dylib
+   opencv_core # Added because pkg-config cannot find symbols
+   opencv_highgui # Added because pkg-config cannot find symbols
+   opencv_video # Added because pkg-config cannot find symbols
+   opencv_imgproc # Added because pkg-config cannot find symbols
    ${opencv_LIBRARIES}
 )   
  
