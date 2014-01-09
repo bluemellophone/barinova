@@ -27,7 +27,8 @@ public:
     fwrite( (void *)&tau, sizeof(double), 1, out);
   }
 
-  void ReadFromFile(FILE *in)  {
+  void ReadFromFile(FILE *in, std::ofstream &monitor)  {
+  // void ReadFromFile(FILE *in)  {
     fread( (void *)&channel, sizeof(int), 1, in);
     fread( (void *)&l1, sizeof(int), 1, in);
     fread( (void *)&t1, sizeof(int), 1, in);
@@ -37,10 +38,15 @@ public:
     fread( (void *)&t2, sizeof(int), 1, in);
     fread( (void *)&r2, sizeof(int), 1, in);
     fread( (void *)&b2, sizeof(int), 1, in);
+
+    //monitor << "channel(" << channel << ") vector[(" << l1 << ") (" << t1 << ") (" << r1 << ") (" << b1 << ") (" << l2 << ") (" << t2 << ") (" << r2 << ") (" << b2 << ")] ";
+    monitor << "channel(" << channel << ") vector[l1(" << l1 << ") t1(" << t1 << ") r1(" << r1 << ") b1(" << b1 << ") l2(" << l2 << ") t2(" << t2 << ") r2(" << r2 << ") b2(" << b2 << ")] ";
     //fread( (void *)&tau, sizeof(double), 1, in);
 
     int itau;
     fread( (void *)&itau, sizeof(int), 1, in);
     tau = itau;
+
+    monitor << "itau(" << tau << ") ";
   }
 };

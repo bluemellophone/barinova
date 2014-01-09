@@ -3,6 +3,7 @@
 #include "../ImageWrapper/MultiImage.h"
 
 #include <cstddef>
+#include <fstream>
 
 template <typename Vote>
 class IHoughForest
@@ -45,6 +46,7 @@ public:
             printf("Reading forest from file ...\n");
 
             FILE *in = fopen(in_cForestPath, "rb");
+            std::ofstream monitor("output.txt");
 
             if (!in)
             {
@@ -53,13 +55,20 @@ public:
             }
 
             fread(&nTrees, sizeof(int), 1, in);
+            monitor << "NumTrees(" << nTrees << ")" << std::endl;
+            
             SetNumberOfTrees(nTrees);
 
             for(int i = 0; i < nTrees; i++)
-            {
-                forest[i]->ReadFromFile(in);
+            {   
+                monitor << "[Tree]" << std::endl;
+                forest[i]->ReadFromFile(in, monitor); // Calls RandomTree.h
+                // forest[i]->ReadFromFile(in);
             }
             fclose(in);
+            monitor.close();
+
+            printf("Completed monitor output ...\n");
 
             setPatchHeight(in_iCellPatchSize);
             setPatchWidth(in_iCellPatchSize);

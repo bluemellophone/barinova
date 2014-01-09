@@ -2,6 +2,7 @@
 
 #include "vector"
 #include "HoughSample.h"
+#include <fstream>
 
 class IVote
 {
@@ -15,7 +16,8 @@ public:
 
   virtual void WriteToFile(FILE *out) = 0;
   
-  virtual void ReadFromFile(FILE *in) = 0;
+  virtual void ReadFromFileVote(FILE *in, std::ofstream &monitor) = 0;
+  // virtual void ReadFromFileVote(FILE *in) = 0;
 
   virtual void SetBlurRadius(double in_dBlurRadius) = 0;
 };

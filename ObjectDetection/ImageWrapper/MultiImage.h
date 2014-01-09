@@ -38,7 +38,7 @@ struct MultiImage
         char path[256];
         sprintf(path, "%s", fname);
 
-        IplImage *orig_im = cvLoadImage(path,-1);
+        IplImage *orig_im = cvLoadImage(path);
 
         if (!orig_im)
         {
@@ -46,7 +46,8 @@ struct MultiImage
             exit(0);
         }
 
-        cvImage = cvCreateImage(cvSize(int(koef*orig_im->width), int(koef*orig_im->height)), IPL_DEPTH_8U, 3);
+        cvImage = cvCreateImage(cvSize(int(koef*orig_im->width), int(koef*orig_im->height)), orig_im->depth, orig_im->nChannels );
+          
         cvResize(orig_im, cvImage);
         cvReleaseImage(&orig_im);
 

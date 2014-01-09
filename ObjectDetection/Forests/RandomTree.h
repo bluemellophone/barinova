@@ -12,6 +12,7 @@
 
 #include <cstdio>
 #include <cassert>
+#include <fstream>
 
 const double BAD_SPLIT = -1E30;
 
@@ -76,6 +77,7 @@ public:
 
             // bestNLeftSamples;
             // bestNRightSamples;
+            
             int bestTextIdx = 0;
             for(int i = 0; i < nTests; i++)
             {
@@ -220,9 +222,12 @@ public:
 
     }
 
-    void ReadFromFile(FILE *in, double blur_radius = 1)
+    void ReadFromFile(FILE *in, std::ofstream &monitor, double blur_radius = 1)
+    // void ReadFromFile(FILE *in, double blur_radius = 1)
     {
         fread((void *)&nNodes,sizeof(int), 1, in);
+        monitor << "     NumNodes(" << nNodes << ")" << std::endl;
+
         nodes = new Node[nNodes];
         if(!nodes)
         {
@@ -232,19 +237,34 @@ public:
 
         for(int i = 0; i < nNodes; i++)
         {
+            monitor << "     [Node("<< i << ")] ";
+
             fread((void *)&nodes[i].depth,sizeof(int), 1, in);
+            monitor << "depth(" << nodes[i].depth << ") ";
+
             fread((void *)&nodes[i].isLeaf,sizeof(bool), 1, in);
+            monitor << "leafFlag(" << nodes[i].isLeaf << ") ";
+
             //printf("Node %d, leaf = %d, depth = %d\n", i, (int)nodes[i].isLeaf, (int)nodes[i].depth);
             if(nodes[i].isLeaf)
             {
+                monitor << std::endl << "          ";
+
                 nodes[i].vote = new Vote;
-                nodes[i].vote->ReadFromFile(in);
+                nodes[i].vote->ReadFromFileVote(in, monitor); // Vote.cpp
+                // nodes[i].vote->ReadFromFileVote(in);
             }
             else
             {
-                nodes[i].test.ReadFromFile(in);
+                nodes[i].test.ReadFromFile(in, monitor); // BoxTest.h
+                // nodes[i].test.ReadFromFile(in);
                 fread((void *)&nodes[i].rightChild,sizeof(int), 1, in);
+                monitor << "rightIndex(" << nodes[i].rightChild << ") ";
+
                 fread((void *)&nodes[i].leftChild,sizeof(int), 1, in);
+                monitor << "leftIndex(" << nodes[i].leftChild << ") ";
+
+                monitor << std::endl;
                 //printf("Left child = %d, right child = %d\n", nodes[i].rightChild, nodes[i].leftChild);
             }
         }

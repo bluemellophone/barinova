@@ -331,7 +331,7 @@ template<class T, class U> void DrawSegmentation24bpp(T *im, U *mask, int w, int
     {
       if(y >= 0  && x >= 0 && x < w && y < h &&
         ((y>0 && mask[i] != mask[i-w]) || (y < h && mask[i] != mask[i+w]) ||
-        (x>0 && mask[i] != mask[i-1]) || (x < w && mask[i] != mask[i+1])))
+        (x>0 && mask[i] != mask[i-1]) || (x < w && mask[i] != mask[i+1]) ))
       {
         im[3*i+0] = 0;
         im[3*i+1] = 0;

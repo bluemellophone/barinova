@@ -1,5 +1,6 @@
 #pragma once
 #include "IVote.h"
+#include <fstream>
 
 class CVote : public IVote
 {
@@ -13,7 +14,8 @@ public:
 
   void WriteToFile(FILE *out);
   
-  void ReadFromFile(FILE *in);
+  void ReadFromFileVote(FILE *in, std::ofstream &monitor);
+  // void ReadFromFileVote(FILE *in);
 
   void SetBlurRadius(double in_dBlurRadius);
   
