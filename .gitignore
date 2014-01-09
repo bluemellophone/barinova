@@ -1,4 +1,5 @@
 ObjectDetection/ObjectDetection/build/
 object_detection
-pedestrian-results
-pedestrian-tud-sequence
+input
+output
+debug.txt

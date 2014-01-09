@@ -46,7 +46,7 @@ public:
             printf("Reading forest from file ...\n");
 
             FILE *in = fopen(in_cForestPath, "rb");
-            std::ofstream monitor("output.txt");
+            std::ofstream monitor("debug.txt");
 
             if (!in)
             {
