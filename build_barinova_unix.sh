@@ -6,5 +6,5 @@ cd build
 cmake ..
 make
 
-mv object_detection ../../../object_detection
+cp object_detection ../../../object_detection
 cd ../../../
