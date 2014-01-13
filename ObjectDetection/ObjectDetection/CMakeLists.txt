@@ -28,10 +28,12 @@ pkg_check_modules(opencv REQUIRED opencv>=2.1)
 
 link_directories(
 	${opencv_LIBRARY_DIRS}
+	"/opt/local/lib/"
 )
 include_directories(
 	"../Utils/" 
 	${opencv_INCLUDE_DIRS} 
+	"/opt/local/include/"
 )
 
 # ----------------------------------------------------------------------
@@ -58,9 +60,10 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -DNDEBUG ${OPT_CXX_FLAGS}")
 add_executable(object_detection ${SrcCpp})
 
 target_link_libraries(object_detection
-   boost_filesystem boost_system
-   boost_thread
-   gomp # ln -s /opt/local/lib/libgcc/libgomp.1.dylib libgomp.dylib
+   boost_filesystem-mt
+   boost_system-mt
+   boost_thread-mt
+   gomp # sudo ln -s /opt/local/lib/libgcc/libgomp.1.dylib /opt/local/lib/libgomp.dylib
    opencv_core # Added because pkg-config cannot find symbols
    opencv_highgui # Added because pkg-config cannot find symbols
    opencv_video # Added because pkg-config cannot find symbols

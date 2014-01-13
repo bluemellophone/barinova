@@ -1,8 +1,8 @@
 // folder with input images
-input/pedestrian/
+input/pedestrian
 \\
 // output folder
-output/pedestrian/
+output/pedestrian
 \\
 // width of a bounding box at each scale corresponding to detection
 40
@@ -28,11 +28,11 @@ trees/pedestrian.dat
 // half of maximum height of object in the data used for training the forest
 45
 \\
-// bias of background cost, parameter of detection algorithm
-8.5
+// bias of background cost, parameter of detection algorithm (start = 8.5), SENSITIVITY [HIGHER MORE SENSITIVE]
+8.0
 \\
-// penalty for adding a hypothesis, parameter of detection algorithm
-1500
+// penalty for adding a hypothesis, parameter of detection algorithm (start = 1500), SENSITIVITY [ LOWER MORE SENSITIVE]
+2000
 \\
 //only patches with probabilities to belong to background lower than this threshold can vote
 0.7

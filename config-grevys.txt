@@ -5,16 +5,16 @@ input/grevys/
 output/grevys/
 \\
 // width of a bounding box at each scale corresponding to detection
-256
+192
 \\
 // height of a bounding box at each scale corresponding to detection
-80
+60
 \\
 // number of scales for multi-scale detection
 3
 \\
 // resize images before detection by this coefficient
-0.647
+0.6
 \\
 //forest name
 trees/grevys.dat
@@ -23,19 +23,19 @@ trees/grevys.dat
 16
 \\
 // half of maximum width of object in the data used for training the forest
-256
+128
 \\
 // half of maximum height of object in the data used for training the forest
-80
+40
 \\
-// bias of background cost, parameter of detection algorithm
-8.5
+// bias of background cost, parameter of detection algorithm (start = 8.5), SENSITIVITY [ HIGHER MORE SENSITIVE ]
+10.0
 \\
-// penalty for adding a hypothesis, parameter of detection algorithm
+// penalty for adding a hypothesis, parameter of detection algorithm (start = 1500), SENSITIVITY [ LOWER MORE SENSITIVE ]
 1500
 \\
 //only patches with probabilities to belong to background lower than this threshold can vote
-0.7
+0.70
 \\
 //minimal allowed probability of a patch to belong to object, if probability is lesser the vote is ignored
 0.00005
@@ -47,4 +47,4 @@ trees/grevys.dat
 0.85
 \\
 // maximum number of objects in an image
-8
+10
