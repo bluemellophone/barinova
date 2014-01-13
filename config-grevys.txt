@@ -5,16 +5,16 @@ input/grevys/
 output/grevys/
 \\
 // width of a bounding box at each scale corresponding to detection
-192
+128
 \\
 // height of a bounding box at each scale corresponding to detection
 60
 \\
 // number of scales for multi-scale detection
-3
+4
 \\
 // resize images before detection by this coefficient
-0.6
+0.67
 \\
 //forest name
 trees/grevys.dat
@@ -35,7 +35,7 @@ trees/grevys.dat
 1500
 \\
 //only patches with probabilities to belong to background lower than this threshold can vote
-0.70
+0.75
 \\
 //minimal allowed probability of a patch to belong to object, if probability is lesser the vote is ignored
 0.00005
@@ -44,7 +44,7 @@ trees/grevys.dat
 5
 \\
 // size of images at subsequent scales differ by coefficient 
-0.85
+0.80
 \\
 // maximum number of objects in an image
 10
